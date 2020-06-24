@@ -1,6 +1,7 @@
 package controller;
 
 import view.LoginView;
+import view.MainView;
 import model.dao.LoginDAO;
 
 /**
@@ -10,10 +11,12 @@ import model.dao.LoginDAO;
 public class LoginController {
 
     private final LoginView view;
+    private final MainView main;
     private final LoginDAO dao;
 
     public LoginController(LoginView view) {
         this.view = view;
+        this.main = new MainView();
         this.dao = new LoginDAO();
     }
     
@@ -24,7 +27,7 @@ public class LoginController {
         boolean login = dao.makeLogin(username, password);
         
         if (login) {
-            System.out.println("window main");
+            main.setVisible(true);
             view.dispose();
         } else {
             view.showMessage("Username or Password invalid!");
