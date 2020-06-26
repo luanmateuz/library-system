@@ -25,11 +25,11 @@ public class EmployeeDAO {
         PreparedStatement stmt = connection.prepareCall(sql);
         
         stmt.setString(1, employee.getName());
-        stmt.setLong(2, employee.getCpf());
+        stmt.setString(2, employee.getCpf());
         stmt.setString(3, employee.getSex());
         stmt.setString(4, employee.getBirthday());
         stmt.setString(5, employee.getAddress());
-        stmt.setLong(6, employee.getTelephone());
+        stmt.setString(6, employee.getTelephone());
         stmt.setString(7, employee.getUsername());
         stmt.setString(8, employee.getPassword());
         

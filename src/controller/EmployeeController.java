@@ -26,11 +26,11 @@ public class EmployeeController {
             model = new Employee();
 
             model.setName(view.getTxtName().getText());
-            model.setCpf(Long.parseLong(view.getTxtCPF().getText().replace(".", "").replace("-", "")));
+            model.setCpf(view.getTxtCPF().getText().replace(".", "").replace("-", ""));
             model.setSex(view.getCmbSex().getSelectedItem().toString());
             model.setBirthday(view.getTxtBirthday().getText().replace("/", "-"));
             model.setAddress(view.getTxtAddress().getText());
-            model.setTelephone(Long.parseLong(view.getTxtTelephone().getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", "")));
+            model.setTelephone(view.getTxtTelephone().getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
             model.setUsername(view.getTxtUsername().getText());
             model.setPassword(new String(view.getPwdPassword().getPassword()));
             

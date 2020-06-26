@@ -8,13 +8,13 @@ abstract public class Person {
     
     private int id;
     private String name;
-    private long cpf;
+    private String cpf;
     private String sex;
     private String birthday;
     private String address;
-    private long telephone;
+    private String telephone;
 
-    public Person(int id, String name, long cpf, String sex, String birthday, String address, long telephone) {
+    public Person(int id, String name, String cpf, String sex, String birthday, String address, String telephone) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -49,11 +49,11 @@ abstract public class Person {
         this.name = name;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -85,11 +85,11 @@ abstract public class Person {
         this.address = address;
     }
 
-    public long getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(long telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
     
