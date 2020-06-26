@@ -45,9 +45,9 @@ public class EmployeeController {
                 System.out.println(e.getMessage());
                 view.showMessage("Error when registering Employee");
             }
+        } else {
+            view.showMessage("Fill all Data!");
         }
-
-        view.showMessage("Fill all Data!");
 
     }
 
