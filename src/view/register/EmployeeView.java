@@ -99,9 +99,17 @@ public class EmployeeView extends javax.swing.JFrame {
     public boolean checksData() {
         if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
                 && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
-                && !pwdPassword.getText().equals("") && !pwdConfirmPassword.getText().equals("")) {
+                && !pwdPassword.getPassword().toString().equals("") && !pwdConfirmPassword.getPassword().toString().equals("")) {
             return true;
         } 
+        
+        return false;
+    }
+    
+    public boolean checkPasswords() {
+        if (pwdPassword.getPassword().toString().equals(pwdConfirmPassword.getPassword().toString())) {
+            return true;
+        }
         
         return false;
     }

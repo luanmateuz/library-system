@@ -22,29 +22,35 @@ public class EmployeeController {
     public void add() {
 
         if (view.checksData()) {
-            
-            model = new Employee();
+            if (view.checkPasswords()) {
 
-            model.setName(view.getTxtName().getText());
-            model.setCpf(view.getTxtCPF().getText().replace(".", "").replace("-", ""));
-            model.setSex(view.getCmbSex().getSelectedItem().toString());
-            model.setBirthday(view.getTxtBirthday().getText().replace("/", "-"));
-            model.setAddress(view.getTxtAddress().getText());
-            model.setTelephone(view.getTxtTelephone().getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
-            model.setUsername(view.getTxtUsername().getText());
-            model.setPassword(new String(view.getPwdPassword().getPassword()));
-            
-            try {
-                dao = new EmployeeDAO();
+                model = new Employee();
 
-                dao.insert(model);
+                model.setName(view.getTxtName().getText());
+                model.setCpf(view.getTxtCPF().getText().replace(".", "").replace("-", ""));
+                model.setSex(view.getCmbSex().getSelectedItem().toString());
+                model.setBirthday(view.getTxtBirthday().getText().replace("/", "-"));
+                model.setAddress(view.getTxtAddress().getText());
+                model.setTelephone(view.getTxtTelephone().getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
+                model.setUsername(view.getTxtUsername().getText());
+                model.setPassword(new String(view.getPwdPassword().getPassword()));
 
-                view.showMessage("Registered Successfully");
+                try {
+                    dao = new EmployeeDAO();
 
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-                view.showMessage("Error when registering Employee");
+                    dao.insert(model);
+
+                    view.showMessage("Registered Successfully");
+
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                    view.showMessage("Error when registering Employee");
+                }
+                
+            } else {
+                view.showMessage("Error: Different Passwords");
             }
+
         } else {
             view.showMessage("Fill all Data!");
         }
