@@ -1,13 +1,109 @@
 package view.register;
 
+import controller.EmployeeController;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author luan
  */
 public class EmployeeView extends javax.swing.JFrame {
     
+    private EmployeeController controller;
+    
     public EmployeeView() {
         initComponents();
+        controller = new EmployeeController(this);
+    }
+
+    public JComboBox<String> getCmbSex() {
+        return cmbSex;
+    }
+
+    public void setCmbSex(JComboBox<String> cmbSex) {
+        this.cmbSex = cmbSex;
+    }
+
+    public JPasswordField getPwdConfirmPassword() {
+        return pwdConfirmPassword;
+    }
+
+    public void setPwdConfirmPassword(JPasswordField pwdConfirmPassword) {
+        this.pwdConfirmPassword = pwdConfirmPassword;
+    }
+
+    public JPasswordField getPwdPassword() {
+        return pwdPassword;
+    }
+
+    public void setPwdPassword(JPasswordField pwdPassword) {
+        this.pwdPassword = pwdPassword;
+    }
+
+    public JTextField getTxtAddress() {
+        return txtAddress;
+    }
+
+    public void setTxtAddress(JTextField txtAddress) {
+        this.txtAddress = txtAddress;
+    }
+
+    public JFormattedTextField getTxtBirthday() {
+        return txtBirthday;
+    }
+
+    public void setTxtBirthday(JFormattedTextField txtBirthday) {
+        this.txtBirthday = txtBirthday;
+    }
+
+    public JFormattedTextField getTxtCPF() {
+        return txtCPF;
+    }
+
+    public void setTxtCPF(JFormattedTextField txtCPF) {
+        this.txtCPF = txtCPF;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public void setTxtName(JTextField txtName) {
+        this.txtName = txtName;
+    }
+
+    public JFormattedTextField getTxtTelephone() {
+        return txtTelephone;
+    }
+
+    public void setTxtTelephone(JFormattedTextField txtTelephone) {
+        this.txtTelephone = txtTelephone;
+    }
+
+    public JTextField getTxtUsername() {
+        return txtUsername;
+    }
+
+    public void setTxtUsername(JTextField txtUsername) {
+        this.txtUsername = txtUsername;
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+    
+    public boolean checksData() {
+        if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
+                && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
+                && !pwdPassword.getText().equals("") && !pwdConfirmPassword.getText().equals("")) {
+            return true;
+        } 
+        
+        return false;
     }
 
     /**
@@ -89,7 +185,7 @@ public class EmployeeView extends javax.swing.JFrame {
         lblTelephone.setText("Telephone:");
 
         try {
-            txtTelephone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            txtTelephone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -125,7 +221,7 @@ public class EmployeeView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(285, 285, 285)
                 .addComponent(lblEmployee)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,16 +298,18 @@ public class EmployeeView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        System.out.println("Register");
+        controller.add();
+        System.out.println("Register");/*
         System.out.println(txtName.getText());
-        System.out.println(txtCPF.getText());
+        int n = Integer.parseInt(txtCPF.getText().replace(".", "").replace("-", ""));
+        System.out.println(n);
         System.out.println(cmbSex.getSelectedItem());
-        System.out.println(txtBirthday.getText());
+        System.out.println(txtBirthday.getText().replace("/", "-"));
         System.out.println(txtAddress.getText());
         System.out.println(txtTelephone.getText());
         System.out.println(txtUsername.getText());
         System.out.println(pwdPassword.getText());
-        System.out.println(pwdConfirmPassword.getText());
+        System.out.println(pwdConfirmPassword.getText());*/
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**

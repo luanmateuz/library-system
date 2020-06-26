@@ -30,7 +30,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
               <Component id="lblEmployee" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="303" max="32767" attributes="0"/>
+              <EmptySpace pref="299" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -221,7 +221,7 @@
     <Component class="javax.swing.JFormattedTextField" name="txtTelephone">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="(##) #####-####" subtype="-1" type="5"/>
+          <Format format="(##)#####-####" subtype="-1" type="5"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="18" style="0"/>

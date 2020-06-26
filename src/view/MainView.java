@@ -5,15 +5,16 @@
  */
 package view;
 
+import view.register.EmployeeView;
+
 /**
  *
  * @author luan
  */
 public class MainView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LibraryView
-     */
+    private EmployeeView registerEmployee;
+            
     public MainView() {
         initComponents();
     }
@@ -27,8 +28,36 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mnbMenuBar = new javax.swing.JMenuBar();
+        mnuRegister = new javax.swing.JMenu();
+        mniEmpoyee = new javax.swing.JMenuItem();
+        mnuEdit = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 700));
+
+        mnbMenuBar.setBorder(null);
+        mnbMenuBar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
+        mnuRegister.setText("Register");
+        mnuRegister.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+
+        mniEmpoyee.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniEmpoyee.setText("Employee");
+        mniEmpoyee.setBorder(null);
+        mniEmpoyee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEmpoyeeActionPerformed(evt);
+            }
+        });
+        mnuRegister.add(mniEmpoyee);
+
+        mnbMenuBar.add(mnuRegister);
+
+        mnuEdit.setText("Edit");
+        mnuEdit.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnbMenuBar.add(mnuEdit);
+
+        setJMenuBar(mnbMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,12 +67,17 @@ public class MainView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniEmpoyeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEmpoyeeActionPerformed
+        registerEmployee = new EmployeeView();
+        registerEmployee.setVisible(true);
+    }//GEN-LAST:event_mniEmpoyeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,13 +108,15 @@ public class MainView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainView().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainView().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar mnbMenuBar;
+    private javax.swing.JMenuItem mniEmpoyee;
+    private javax.swing.JMenu mnuEdit;
+    private javax.swing.JMenu mnuRegister;
     // End of variables declaration//GEN-END:variables
 }
