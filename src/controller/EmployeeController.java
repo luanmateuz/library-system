@@ -3,7 +3,7 @@ package controller;
 import java.sql.SQLException;
 import model.Employee;
 import model.dao.EmployeeDAO;
-import view.register.EmployeeView;
+import view.EmployeeView;
 
 /**
  *

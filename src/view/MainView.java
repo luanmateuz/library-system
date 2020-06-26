@@ -5,8 +5,6 @@
  */
 package view;
 
-import view.register.EmployeeView;
-
 /**
  *
  * @author luan
