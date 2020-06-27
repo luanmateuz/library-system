@@ -123,6 +123,16 @@ public class EmployeeView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, message);
     }
     
+    public boolean showConfirm(String message) {
+        int res = JOptionPane.showConfirmDialog(rootPane, message, "Confirm!", JOptionPane.YES_NO_OPTION);
+        
+        if (res == JOptionPane.YES_NO_OPTION) {
+            return true;
+        }
+        
+        return false;
+    }
+    
     public boolean checksData() {
         if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
                 && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
@@ -589,7 +599,7 @@ public class EmployeeView extends javax.swing.JFrame {
     }
     
     private void btnAlterActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("alter");
+        controller.alter();
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {

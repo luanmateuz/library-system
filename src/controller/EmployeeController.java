@@ -44,7 +44,7 @@ public class EmployeeController {
 
                     view.showMessage("Registered Successfully");
                     view.cleanFields();
-                    
+
                     this.showList();
 
                 } catch (SQLException e) {
@@ -61,14 +61,58 @@ public class EmployeeController {
         }
 
     }
-    
+
+    public void alter() {
+        if (view.checksData()) {
+            if (view.checkPasswords()) {
+
+                if (view.showConfirm("Confirm change of registration?")) {
+
+                    model = new Employee();
+
+                    model.setId(Integer.parseInt(view.getTxtId().getText()));
+                    model.setName(view.getTxtName().getText());
+                    model.setCpf(view.getTxtCPF().getText().replace(".", "").replace("-", ""));
+                    model.setSex(view.getCmbSex().getSelectedItem().toString());
+                    model.setBirthday(view.getTxtBirthday().getText().replace("/", "-"));
+                    model.setAddress(view.getTxtAddress().getText());
+                    model.setTelephone(view.getTxtTelephone().getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
+                    model.setUsername(view.getTxtUsername().getText());
+                    model.setPassword(new String(view.getPwdPassword().getPassword()));
+
+                    try {
+                        dao = new EmployeeDAO();
+
+                        dao.update(model);
+
+                        view.showMessage("Altered Successfully");
+                        view.cleanFields();
+
+                        this.showList();
+
+                    } catch (SQLException e) {
+                        System.out.println(e.getMessage());
+                        view.showMessage("Error when registering Employee");
+                    }
+                }
+
+            } else {
+                view.showMessage("Error: Different Passwords");
+            }
+
+        } else {
+            view.showMessage("Fill all Data!");
+        }
+
+    }
+
     public void fillInData() {
-        
+
         int selectedLine = view.getTblSearch().getSelectedRow();
-        
+
         if (selectedLine != -1) {
             model = new Employee();
-            
+
             model.setId((int) view.getTblSearch().getValueAt(selectedLine, 0));
             model.setName(view.getTblSearch().getValueAt(selectedLine, 1).toString());
             model.setCpf(view.getTblSearch().getValueAt(selectedLine, 2).toString());
@@ -77,18 +121,18 @@ public class EmployeeController {
             model.setTelephone(view.getTblSearch().getValueAt(selectedLine, 5).toString());
             model.setAddress(view.getTblSearch().getValueAt(selectedLine, 6).toString());
             model.setUsername(view.getTblSearch().getValueAt(selectedLine, 1).toString());
-            
+
             view.fillsFields(
-                    model.getId(), 
-                    model.getName(), 
-                    model.getCpf(), 
+                    model.getId(),
+                    model.getName(),
+                    model.getCpf(),
                     model.getSex(),
                     model.getBirthday(),
                     model.getTelephone(),
                     model.getAddress(),
                     model.getUsername());
         }
-        
+
         view.enableFields();
     }
 
@@ -122,7 +166,7 @@ public class EmployeeController {
             } else {
                 view.showMessage("No Record Found");
             }
-            
+
         } catch (SQLException e) {
             view.showMessage("Error when list Employee");
         }
