@@ -68,7 +68,7 @@ public class EmployeeController {
         try {
             dao = new EmployeeDAO();
 
-            employee = dao.list();
+            employee = dao.list("%" + view.getTxtNameSearch().getText() + "%");
 
             if (!employee.isEmpty()) {
 
