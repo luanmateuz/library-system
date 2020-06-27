@@ -64,13 +64,13 @@ abstract public class Person {
     public void setSex(String sex) {
         if (sex.equals("Male")) {
             this.sex = "m";
-        } else {
+        } else if (sex.equals("Feminine")) {
             this.sex = "f";
         }
         
         if (sex.equals("m")) {
             this.sex = "Male";
-        } else {
+        } else if (sex.equals("f")) {
             this.sex = "Feminine";
         }
     }
