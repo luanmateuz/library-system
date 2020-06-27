@@ -157,6 +157,7 @@
                     <Column editable="true" title="Username" type="java.lang.String"/>
                   </Table>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

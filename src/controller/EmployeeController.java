@@ -43,6 +43,9 @@ public class EmployeeController {
                     dao.insert(model);
 
                     view.showMessage("Registered Successfully");
+                    view.cleanFields();
+                    
+                    this.showList();
 
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -66,8 +69,6 @@ public class EmployeeController {
             dao = new EmployeeDAO();
 
             employee = dao.list();
-
-            System.out.println("listoou");
 
             if (!employee.isEmpty()) {
 

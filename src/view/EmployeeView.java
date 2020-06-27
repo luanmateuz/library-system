@@ -17,7 +17,8 @@ public class EmployeeView extends javax.swing.JFrame {
     private EmployeeController controller;
     
     public EmployeeView() {
-        initComponents();
+        this.initComponents();
+        this.disableFields();
         controller = new EmployeeController(this);
         controller.showList();
     }
@@ -139,6 +140,48 @@ public class EmployeeView extends javax.swing.JFrame {
         
         return false;
     }
+    
+    public void cleanFields() {
+        txtId.setText("");
+        txtName.setText("");
+        txtCPF.setText("");
+        cmbSex.getSelectedIndex();
+        txtBirthday.setText("");
+        txtAddress.setText("");
+        txtTelephone.setText("");
+        txtUsername.setText("");
+        pwdPassword.setText("");
+        pwdConfirmPassword.setText("");
+    }
+    
+    public void disableFields() {
+        txtId.setEditable(false);
+        txtName.setEditable(false);
+        txtCPF.setEditable(false);
+        cmbSex.setEnabled(false);
+        txtBirthday.setEditable(false);
+        txtAddress.setEditable(false);
+        txtTelephone.setEditable(false);
+        txtUsername.setEditable(false);
+        pwdPassword.setEditable(false);
+        pwdConfirmPassword.setEditable(false);
+        
+        btnRegister.setEnabled(false);
+    }
+    
+    public void enableFields() {
+        txtName.setEditable(true);
+        txtCPF.setEditable(true);
+        cmbSex.setEnabled(true);
+        txtBirthday.setEditable(true);
+        txtAddress.setEditable(true);
+        txtTelephone.setEditable(true);
+        txtUsername.setEditable(true);
+        pwdPassword.setEditable(true);
+        pwdConfirmPassword.setEditable(true);
+        
+        btnRegister.setEnabled(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,6 +263,7 @@ public class EmployeeView extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblSearch.setEnabled(false);
         jScrollPane1.setViewportView(tblSearch);
 
         javax.swing.GroupLayout panSearchLayout = new javax.swing.GroupLayout(panSearch);
@@ -527,26 +571,15 @@ public class EmployeeView extends javax.swing.JFrame {
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("new");
+        this.enableFields();
     }
     
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         controller.add();
-        System.out.println("Register");/*
-        System.out.println(txtName.getText());
-        int n = Integer.parseInt(txtCPF.getText().replace(".", "").replace("-", ""));
-        System.out.println(n);
-        System.out.println(cmbSex.getSelectedItem());
-        System.out.println(txtBirthday.getText().replace("/", "-"));
-        System.out.println(txtAddress.getText());
-        System.out.println(txtTelephone.getText());
-        System.out.println(txtUsername.getText());
-        System.out.println(pwdPassword.getText());
-        System.out.println(pwdConfirmPassword.getText());*/
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("quit");
+        this.dispose();
     }
     
     /**
