@@ -152,12 +152,15 @@
                     <Column editable="false" title="CPF" type="java.lang.String"/>
                     <Column editable="false" title="Sex" type="java.lang.String"/>
                     <Column editable="false" title="Birthday" type="java.lang.String"/>
-                    <Column editable="false" title="Address" type="java.lang.String"/>
                     <Column editable="false" title="Telephone" type="java.lang.String"/>
+                    <Column editable="false" title="Address" type="java.lang.String"/>
                     <Column editable="false" title="Username" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblSearchMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

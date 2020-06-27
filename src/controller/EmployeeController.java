@@ -61,6 +61,36 @@ public class EmployeeController {
         }
 
     }
+    
+    public void fillInData() {
+        
+        int selectedLine = view.getTblSearch().getSelectedRow();
+        
+        if (selectedLine != -1) {
+            model = new Employee();
+            
+            model.setId((int) view.getTblSearch().getValueAt(selectedLine, 0));
+            model.setName(view.getTblSearch().getValueAt(selectedLine, 1).toString());
+            model.setCpf(view.getTblSearch().getValueAt(selectedLine, 2).toString());
+            model.setSex((String) view.getTblSearch().getValueAt(selectedLine, 3));
+            model.setBirthday(view.getTblSearch().getValueAt(selectedLine, 4).toString().replace("-", ""));
+            model.setTelephone(view.getTblSearch().getValueAt(selectedLine, 5).toString());
+            model.setAddress(view.getTblSearch().getValueAt(selectedLine, 6).toString());
+            model.setUsername(view.getTblSearch().getValueAt(selectedLine, 1).toString());
+            
+            view.fillsFields(
+                    model.getId(), 
+                    model.getName(), 
+                    model.getCpf(), 
+                    model.getSex(),
+                    model.getBirthday(),
+                    model.getTelephone(),
+                    model.getAddress(),
+                    model.getUsername());
+        }
+        
+        view.enableFields();
+    }
 
     public void showList() {
         List<Employee> employee;

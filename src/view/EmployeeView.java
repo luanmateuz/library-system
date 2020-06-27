@@ -134,7 +134,7 @@ public class EmployeeView extends javax.swing.JFrame {
     }
     
     public boolean checkPasswords() {
-        if (pwdPassword.getText().equals(pwdConfirmPassword.getText())) {
+        if (!pwdPassword.getText().equals("") && pwdPassword.getText().equals(pwdConfirmPassword.getText())) {
             return true;
         }
         
@@ -147,11 +147,22 @@ public class EmployeeView extends javax.swing.JFrame {
         txtCPF.setText("");
         cmbSex.getSelectedIndex();
         txtBirthday.setText("");
-        txtAddress.setText("");
         txtTelephone.setText("");
+        txtAddress.setText("");
         txtUsername.setText("");
         pwdPassword.setText("");
         pwdConfirmPassword.setText("");
+    }
+    
+    public void fillsFields(int id, String name, String cpf, String sex, String birthday, String telephone, String address, String username) {
+        txtId.setText(id+"");
+        txtName.setText(name);
+        txtCPF.setText(cpf);
+        cmbSex.setSelectedItem(sex);
+        txtBirthday.setText(birthday);
+        txtTelephone.setText(telephone);
+        txtAddress.setText(address);
+        txtUsername.setText(username);
     }
     
     public void disableFields() {
@@ -160,8 +171,8 @@ public class EmployeeView extends javax.swing.JFrame {
         txtCPF.setEditable(false);
         cmbSex.setEnabled(false);
         txtBirthday.setEditable(false);
-        txtAddress.setEditable(false);
         txtTelephone.setEditable(false);
+        txtAddress.setEditable(false);
         txtUsername.setEditable(false);
         pwdPassword.setEditable(false);
         pwdConfirmPassword.setEditable(false);
@@ -174,13 +185,13 @@ public class EmployeeView extends javax.swing.JFrame {
         txtCPF.setEditable(true);
         cmbSex.setEnabled(true);
         txtBirthday.setEditable(true);
-        txtAddress.setEditable(true);
         txtTelephone.setEditable(true);
+        txtAddress.setEditable(true);
         txtUsername.setEditable(true);
         pwdPassword.setEditable(true);
         pwdConfirmPassword.setEditable(true);
         
-        btnRegister.setEnabled(true);
+        //btnRegister.setEnabled(true);
     }
 
     /**
@@ -252,7 +263,7 @@ public class EmployeeView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "CPF", "Sex", "Birthday", "Address", "Telephone", "Username"
+                "ID", "Name", "CPF", "Sex", "Birthday", "Telephone", "Address", "Username"
             }
         ) {
             Class[] types = new Class [] {
@@ -268,6 +279,11 @@ public class EmployeeView extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSearchMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblSearch);
@@ -577,12 +593,27 @@ public class EmployeeView extends javax.swing.JFrame {
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {
+        this.cleanFields();
         this.enableFields();
+        btnRegister.setEnabled(true);
     }
     
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         controller.add();
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
+        controller.fillInData();
+        /*
+        txtId.setText("1");
+        txtName.setText("Luan");
+        txtCPF.setText("12345678910");
+        cmbSex.getSelectedIndex();
+        txtBirthday.setText("2001/01/26");
+        txtAddress.setText("Riacho Fundo");
+        txtTelephone.setText("61996215556");
+        txtUsername.setText("luan");*/
+    }//GEN-LAST:event_tblSearchMouseClicked
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
