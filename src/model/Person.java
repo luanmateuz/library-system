@@ -67,6 +67,12 @@ abstract public class Person {
         } else {
             this.sex = "f";
         }
+        
+        if (sex.equals("m")) {
+            this.sex = "Male";
+        } else {
+            this.sex = "Feminine";
+        }
     }
 
     public String getBirthday() {
