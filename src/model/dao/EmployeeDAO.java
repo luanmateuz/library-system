@@ -2,7 +2,10 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Employee;
 
 /**
@@ -35,6 +38,38 @@ public class EmployeeDAO {
         
         stmt.execute();
         stmt.close();
+    }
+    
+    public List<Employee> list() throws SQLException {
+    
+        String sql = "SELECT * FROM employee";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        List<Employee> list = new ArrayList<>();
+        
+        while (rs.next()) {
+            Employee employee =  new Employee();
+            
+            employee.setId(rs.getInt("id"));
+            employee.setName(rs.getString("name"));
+            employee.setCpf(rs.getString("cpf"));
+            employee.setSex(rs.getString("sex"));
+            employee.setBirthday(rs.getString("birthday"));
+            employee.setAddress(rs.getString("address"));
+            employee.setTelephone(rs.getString("telephone"));
+            employee.setUsername(rs.getString("username"));
+            
+            list.add(employee);
+        }
+        
+        rs.close();
+        stmt.close();
+        
+        return list;
+        
     }
     
 }

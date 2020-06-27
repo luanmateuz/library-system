@@ -1,6 +1,8 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import model.Employee;
 import model.dao.EmployeeDAO;
 import view.EmployeeView;
@@ -46,13 +48,52 @@ public class EmployeeController {
                     System.out.println(e.getMessage());
                     view.showMessage("Error when registering Employee");
                 }
-                
+
             } else {
                 view.showMessage("Error: Different Passwords");
             }
 
         } else {
             view.showMessage("Fill all Data!");
+        }
+
+    }
+
+    public void showList() {
+        List<Employee> employee;
+
+        try {
+            dao = new EmployeeDAO();
+
+            employee = dao.list();
+
+            System.out.println("listoou");
+
+            if (!employee.isEmpty()) {
+
+                String[] line = new String[]{null, null, null, null, null, null, null, null};
+
+                DefaultTableModel data = (DefaultTableModel) view.getTblSearch().getModel();
+                data.setNumRows(0);
+
+                for (int i = 0; i < employee.size(); i++) {
+                    data.addRow(line);
+                    data.setValueAt(employee.get(i).getId(), i, 0);
+                    data.setValueAt(employee.get(i).getName(), i, 1);
+                    data.setValueAt(employee.get(i).getCpf(), i, 2);
+                    data.setValueAt(employee.get(i).getSex(), i, 3);
+                    data.setValueAt(employee.get(i).getBirthday(), i, 4);
+                    data.setValueAt(employee.get(i).getTelephone(), i, 5);
+                    data.setValueAt(employee.get(i).getAddress(), i, 6);
+                    data.setValueAt(employee.get(i).getUsername(), i, 7);
+                }
+
+            } else {
+                view.showMessage("No Record Found");
+            }
+            
+        } catch (SQLException e) {
+            view.showMessage("Error when list Employee");
         }
 
     }
