@@ -61,6 +61,18 @@ public class EmployeeDAO {
         stmt.close();
     }
     
+    public void delete(int id) throws SQLException {
+        
+        String sql = "DELETE FROM employee WHERE id=?";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        stmt.setInt(1, id);
+        
+        stmt.execute();
+        stmt.close();
+    } 
+    
     public List<Employee> list(String name) throws SQLException {
     
         String sql = "SELECT * FROM employee WHERE name LIKE ?";
