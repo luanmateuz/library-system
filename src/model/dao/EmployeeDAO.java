@@ -40,6 +40,27 @@ public class EmployeeDAO {
         stmt.close();
     }
     
+    public void update(Employee employee) throws SQLException {
+        
+        String sql = "UPDATE employee SET name=?, cpf=?, sex=?, birthday=?, address=?, telephone=?,"
+                + " username=?, password=md5(?) WHERE id=?";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        stmt.setInt(9, employee.getId());
+        stmt.setString(1, employee.getName());
+        stmt.setString(2, employee.getCpf());
+        stmt.setString(3, employee.getSex());
+        stmt.setString(4, employee.getBirthday());
+        stmt.setString(5, employee.getAddress());
+        stmt.setString(6, employee.getTelephone());
+        stmt.setString(7, employee.getUsername());
+        stmt.setString(8, employee.getPassword());
+                
+        stmt.execute();
+        stmt.close();
+    }
+    
     public List<Employee> list(String name) throws SQLException {
     
         String sql = "SELECT * FROM employee WHERE name LIKE ?";
