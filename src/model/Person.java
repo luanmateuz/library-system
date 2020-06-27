@@ -70,7 +70,7 @@ abstract public class Person {
         
         if (sex.equals("m")) {
             this.sex = "Male";
-        } else if (sex.equals("f")) {
+        } else if (sex.equals("f"))  {
             this.sex = "Feminine";
         }
     }
