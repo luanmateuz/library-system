@@ -23,14 +23,6 @@ public class EmployeeView extends javax.swing.JFrame {
         controller.showList();
     }
     
-    public JTable getTblSearch() {
-        return tblSearch;
-    }
-
-    public void setTblSearch(JTable tblSearch) {
-        this.tblSearch = tblSearch;
-    }
-
     public JTextField getTxtId() {
         return txtId;
     }
@@ -38,15 +30,23 @@ public class EmployeeView extends javax.swing.JFrame {
     public void setTxtId(JTextField txtId) {
         this.txtId = txtId;
     }
-
-    public JTextField getTxtNameSearch() {
-        return txtNameSearch;
+    
+    public JTextField getTxtName() {
+        return txtName;
     }
 
-    public void setTxtNameSearch(JTextField txtNameSearch) {
-        this.txtNameSearch = txtNameSearch;
+    public void setTxtName(JTextField txtName) {
+        this.txtName = txtName;
+    }
+    
+    public JFormattedTextField getTxtCPF() {
+        return txtCPF;
     }
 
+    public void setTxtCPF(JFormattedTextField txtCPF) {
+        this.txtCPF = txtCPF;
+    }
+    
     public JComboBox<String> getCmbSex() {
         return cmbSex;
     }
@@ -54,21 +54,21 @@ public class EmployeeView extends javax.swing.JFrame {
     public void setCmbSex(JComboBox<String> cmbSex) {
         this.cmbSex = cmbSex;
     }
-
-    public JPasswordField getPwdConfirmPassword() {
-        return pwdConfirmPassword;
+    
+    public JFormattedTextField getTxtBirthday() {
+        return txtBirthday;
     }
 
-    public void setPwdConfirmPassword(JPasswordField pwdConfirmPassword) {
-        this.pwdConfirmPassword = pwdConfirmPassword;
+    public void setTxtBirthday(JFormattedTextField txtBirthday) {
+        this.txtBirthday = txtBirthday;
+    }
+    
+    public JFormattedTextField getTxtTelephone() {
+        return txtTelephone;
     }
 
-    public JPasswordField getPwdPassword() {
-        return pwdPassword;
-    }
-
-    public void setPwdPassword(JPasswordField pwdPassword) {
-        this.pwdPassword = pwdPassword;
+    public void setTxtTelephone(JFormattedTextField txtTelephone) {
+        this.txtTelephone = txtTelephone;
     }
 
     public JTextField getTxtAddress() {
@@ -78,39 +78,7 @@ public class EmployeeView extends javax.swing.JFrame {
     public void setTxtAddress(JTextField txtAddress) {
         this.txtAddress = txtAddress;
     }
-
-    public JFormattedTextField getTxtBirthday() {
-        return txtBirthday;
-    }
-
-    public void setTxtBirthday(JFormattedTextField txtBirthday) {
-        this.txtBirthday = txtBirthday;
-    }
-
-    public JFormattedTextField getTxtCPF() {
-        return txtCPF;
-    }
-
-    public void setTxtCPF(JFormattedTextField txtCPF) {
-        this.txtCPF = txtCPF;
-    }
-
-    public JTextField getTxtName() {
-        return txtName;
-    }
-
-    public void setTxtName(JTextField txtName) {
-        this.txtName = txtName;
-    }
-
-    public JFormattedTextField getTxtTelephone() {
-        return txtTelephone;
-    }
-
-    public void setTxtTelephone(JFormattedTextField txtTelephone) {
-        this.txtTelephone = txtTelephone;
-    }
-
+    
     public JTextField getTxtUsername() {
         return txtUsername;
     }
@@ -119,36 +87,63 @@ public class EmployeeView extends javax.swing.JFrame {
         this.txtUsername = txtUsername;
     }
     
-    public void showMessage(String message) {
-        JOptionPane.showMessageDialog(null, message);
+    public JPasswordField getPwdPassword() {
+        return pwdPassword;
+    }
+
+    public void setPwdPassword(JPasswordField pwdPassword) {
+        this.pwdPassword = pwdPassword;
     }
     
-    public boolean showConfirm(String message) {
-        int res = JOptionPane.showConfirmDialog(rootPane, message, "Confirm!", JOptionPane.YES_NO_OPTION);
-        
-        if (res == JOptionPane.YES_NO_OPTION) {
-            return true;
-        }
-        
-        return false;
+    public JPasswordField getPwdConfirmPassword() {
+        return pwdConfirmPassword;
+    }
+
+    public void setPwdConfirmPassword(JPasswordField pwdConfirmPassword) {
+        this.pwdConfirmPassword = pwdConfirmPassword;
     }
     
-    public boolean checksData() {
-        if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
-                && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
-                && !pwdPassword.getPassword().toString().equals("") && !pwdConfirmPassword.getPassword().toString().equals("")) {
-            return true;
-        } 
-        
-        return false;
+    public JTextField getTxtNameSearch() {
+        return txtNameSearch;
+    }
+
+    public void setTxtNameSearch(JTextField txtNameSearch) {
+        this.txtNameSearch = txtNameSearch;
     }
     
-    public boolean checkPasswords() {
-        if (!pwdPassword.getText().equals("") && pwdPassword.getText().equals(pwdConfirmPassword.getText())) {
-            return true;
-        }
+    public JTable getTblSearch() {
+        return tblSearch;
+    }
+
+    public void setTblSearch(JTable tblSearch) {
+        this.tblSearch = tblSearch;
+    }
+    
+    public void enableFields() {
+        txtName.setEditable(true);
+        txtCPF.setEditable(true);
+        cmbSex.setEnabled(true);
+        txtBirthday.setEditable(true);
+        txtTelephone.setEditable(true);
+        txtAddress.setEditable(true);
+        txtUsername.setEditable(true);
+        pwdPassword.setEditable(true);
+        pwdConfirmPassword.setEditable(true);
+    }
+    
+    public void disableFields() {
+        txtId.setEditable(false);
+        txtName.setEditable(false);
+        txtCPF.setEditable(false);
+        cmbSex.setEnabled(false);
+        txtBirthday.setEditable(false);
+        txtTelephone.setEditable(false);
+        txtAddress.setEditable(false);
+        txtUsername.setEditable(false);
+        pwdPassword.setEditable(false);
+        pwdConfirmPassword.setEditable(false);
         
-        return false;
+        btnRegister.setEnabled(false);
     }
     
     public void cleanFields() {
@@ -175,33 +170,36 @@ public class EmployeeView extends javax.swing.JFrame {
         txtUsername.setText(username);
     }
     
-    public void disableFields() {
-        txtId.setEditable(false);
-        txtName.setEditable(false);
-        txtCPF.setEditable(false);
-        cmbSex.setEnabled(false);
-        txtBirthday.setEditable(false);
-        txtTelephone.setEditable(false);
-        txtAddress.setEditable(false);
-        txtUsername.setEditable(false);
-        pwdPassword.setEditable(false);
-        pwdConfirmPassword.setEditable(false);
+    public boolean checksData() {
+        if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
+                && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
+                && !pwdPassword.getPassword().toString().equals("") && !pwdConfirmPassword.getPassword().toString().equals("")) {
+            return true;
+        } 
         
-        btnRegister.setEnabled(false);
+        return false;
     }
     
-    public void enableFields() {
-        txtName.setEditable(true);
-        txtCPF.setEditable(true);
-        cmbSex.setEnabled(true);
-        txtBirthday.setEditable(true);
-        txtTelephone.setEditable(true);
-        txtAddress.setEditable(true);
-        txtUsername.setEditable(true);
-        pwdPassword.setEditable(true);
-        pwdConfirmPassword.setEditable(true);
+    public boolean checkPasswords() {
+        if (!pwdPassword.getText().equals("") && pwdPassword.getText().equals(pwdConfirmPassword.getText())) {
+            return true;
+        }
         
-        //btnRegister.setEnabled(true);
+        return false;
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+    
+    public boolean showConfirm(String message) {
+        int res = JOptionPane.showConfirmDialog(null, message, "Confirm!", JOptionPane.YES_NO_OPTION);
+        
+        if (res == JOptionPane.YES_NO_OPTION) {
+            return true;
+        }
+        
+        return false;
     }
 
     /**
@@ -593,6 +591,10 @@ public class EmployeeView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
         controller.showList();
     }
+
+    private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
+        controller.fillInData();
+    }//GEN-LAST:event_tblSearchMouseClicked
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
         controller.delete();
@@ -611,10 +613,6 @@ public class EmployeeView extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         controller.add();
     }//GEN-LAST:event_btnRegisterActionPerformed
-
-    private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
-        controller.fillInData();
-    }//GEN-LAST:event_tblSearchMouseClicked
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
