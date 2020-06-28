@@ -106,6 +106,30 @@ public class EmployeeController {
 
     }
 
+    public void delete() {
+        if (view.showConfirm("Delete registration?")) {
+
+            model = new Employee();
+
+            model.setId(Integer.parseInt(view.getTxtId().getText()));
+
+            try {
+                dao = new EmployeeDAO();
+
+                dao.delete(model.getId());
+
+                view.showMessage("Deleted Successfully");
+                view.cleanFields();
+
+                this.showList();
+
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
+    }
+
     public void fillInData() {
 
         int selectedLine = view.getTblSearch().getSelectedRow();

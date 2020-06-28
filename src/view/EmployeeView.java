@@ -595,7 +595,7 @@ public class EmployeeView extends javax.swing.JFrame {
     }
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("delete");
+        controller.delete();
     }
     
     private void btnAlterActionPerformed(java.awt.event.ActionEvent evt) {
@@ -614,15 +614,6 @@ public class EmployeeView extends javax.swing.JFrame {
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
         controller.fillInData();
-        /*
-        txtId.setText("1");
-        txtName.setText("Luan");
-        txtCPF.setText("12345678910");
-        cmbSex.getSelectedIndex();
-        txtBirthday.setText("2001/01/26");
-        txtAddress.setText("Riacho Fundo");
-        txtTelephone.setText("61996215556");
-        txtUsername.setText("luan");*/
     }//GEN-LAST:event_tblSearchMouseClicked
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
