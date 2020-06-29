@@ -143,6 +143,8 @@ public class EmployeeView extends javax.swing.JFrame {
         pwdPassword.setEditable(false);
         pwdConfirmPassword.setEditable(false);
         
+        btnDelete.setEnabled(false);
+        btnAlter.setEnabled(false);
         btnRegister.setEnabled(false);
     }
     
@@ -594,6 +596,9 @@ public class EmployeeView extends javax.swing.JFrame {
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
         controller.fillInData();
+        btnDelete.setEnabled(true);
+        btnAlter.setEnabled(true);
+        btnRegister.setEnabled(false);
     }//GEN-LAST:event_tblSearchMouseClicked
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -607,6 +612,8 @@ public class EmployeeView extends javax.swing.JFrame {
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {
         this.cleanFields();
         this.enableFields();
+        btnDelete.setEnabled(false);
+        btnAlter.setEnabled(false);
         btnRegister.setEnabled(true);
     }
     
