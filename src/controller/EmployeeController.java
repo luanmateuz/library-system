@@ -160,8 +160,10 @@ public class EmployeeController {
 
         try {
             dao = new EmployeeDAO();
+            
+            String name = "%" + view.getTxtNameSearch().getText() + "%";
 
-            employee = dao.list("%" + view.getTxtNameSearch().getText() + "%");
+            employee = dao.select(name);
 
             if (!employee.isEmpty()) {
 

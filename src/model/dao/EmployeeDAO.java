@@ -73,7 +73,7 @@ public class EmployeeDAO {
         stmt.close();
     } 
     
-    public List<Employee> list(String name) throws SQLException {
+    public List<Employee> select(String name) throws SQLException {
     
         String sql = "SELECT * FROM employee WHERE name LIKE ?";
         PreparedStatement stmt = connection.prepareCall(sql);
