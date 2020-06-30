@@ -12,6 +12,7 @@ package view;
 public class MainView extends javax.swing.JFrame {
 
     private EmployeeView registerEmployee;
+    private StudentView registerStudent;
             
     public MainView() {
         initComponents();
@@ -29,7 +30,7 @@ public class MainView extends javax.swing.JFrame {
         mnbMenuBar = new javax.swing.JMenuBar();
         mnuRegister = new javax.swing.JMenu();
         mniEmpoyee = new javax.swing.JMenuItem();
-        mnuEdit = new javax.swing.JMenu();
+        mniStudent = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,11 +50,17 @@ public class MainView extends javax.swing.JFrame {
         });
         mnuRegister.add(mniEmpoyee);
 
-        mnbMenuBar.add(mnuRegister);
+        mniStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniStudent.setText("Student");
+        mniStudent.setBorder(null);
+        mniStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniStudentActionPerformed(evt);
+            }
+        });
+        mnuRegister.add(mniStudent);
 
-        mnuEdit.setText("Edit");
-        mnuEdit.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        mnbMenuBar.add(mnuEdit);
+        mnbMenuBar.add(mnuRegister);
 
         setJMenuBar(mnbMenuBar);
 
@@ -76,6 +83,11 @@ public class MainView extends javax.swing.JFrame {
         registerEmployee = new EmployeeView();
         registerEmployee.setVisible(true);
     }//GEN-LAST:event_mniEmpoyeeActionPerformed
+
+    private void mniStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniStudentActionPerformed
+        registerStudent = new StudentView();
+        registerStudent.setVisible(true);
+    }//GEN-LAST:event_mniStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +126,7 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar mnbMenuBar;
     private javax.swing.JMenuItem mniEmpoyee;
-    private javax.swing.JMenu mnuEdit;
+    private javax.swing.JMenuItem mniStudent;
     private javax.swing.JMenu mnuRegister;
     // End of variables declaration//GEN-END:variables
 }
