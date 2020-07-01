@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 /**
@@ -11,8 +6,8 @@ package view;
  */
 public class MainView extends javax.swing.JFrame {
 
-    private EmployeeView registerEmployee;
-    private StudentView registerStudent;
+    private EmployeeView manageEmployee;
+    private StudentView manageStudent;
             
     public MainView() {
         initComponents();
@@ -28,7 +23,7 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         mnbMenuBar = new javax.swing.JMenuBar();
-        mnuRegister = new javax.swing.JMenu();
+        mnuManage = new javax.swing.JMenu();
         mniEmpoyee = new javax.swing.JMenuItem();
         mniStudent = new javax.swing.JMenuItem();
 
@@ -37,8 +32,8 @@ public class MainView extends javax.swing.JFrame {
         mnbMenuBar.setBorder(null);
         mnbMenuBar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        mnuRegister.setText("Register");
-        mnuRegister.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnuManage.setText("Manage");
+        mnuManage.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
 
         mniEmpoyee.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         mniEmpoyee.setText("Employee");
@@ -48,7 +43,7 @@ public class MainView extends javax.swing.JFrame {
                 mniEmpoyeeActionPerformed(evt);
             }
         });
-        mnuRegister.add(mniEmpoyee);
+        mnuManage.add(mniEmpoyee);
 
         mniStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         mniStudent.setText("Student");
@@ -58,9 +53,9 @@ public class MainView extends javax.swing.JFrame {
                 mniStudentActionPerformed(evt);
             }
         });
-        mnuRegister.add(mniStudent);
+        mnuManage.add(mniStudent);
 
-        mnbMenuBar.add(mnuRegister);
+        mnbMenuBar.add(mnuManage);
 
         setJMenuBar(mnbMenuBar);
 
@@ -80,13 +75,13 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniEmpoyeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEmpoyeeActionPerformed
-        registerEmployee = new EmployeeView();
-        registerEmployee.setVisible(true);
+        manageEmployee = new EmployeeView();
+        manageEmployee.setVisible(true);
     }//GEN-LAST:event_mniEmpoyeeActionPerformed
 
     private void mniStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniStudentActionPerformed
-        registerStudent = new StudentView();
-        registerStudent.setVisible(true);
+        manageStudent = new StudentView();
+        manageStudent.setVisible(true);
     }//GEN-LAST:event_mniStudentActionPerformed
 
     /**
@@ -127,6 +122,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuBar mnbMenuBar;
     private javax.swing.JMenuItem mniEmpoyee;
     private javax.swing.JMenuItem mniStudent;
-    private javax.swing.JMenu mnuRegister;
+    private javax.swing.JMenu mnuManage;
     // End of variables declaration//GEN-END:variables
 }
