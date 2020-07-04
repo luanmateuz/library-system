@@ -1,6 +1,8 @@
 package view;
 
+import controller.BookController;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -11,9 +13,13 @@ import javax.swing.JTextField;
  */
 public class BookView extends javax.swing.JFrame {
     
+    private BookController controller;
+    
     public BookView() {
         this.initComponents();
         this.disableFields();
+        controller = new BookController(this);
+        controller.showList();
     }
     
     public JTextField getTxtId() {
@@ -24,36 +30,53 @@ public class BookView extends javax.swing.JFrame {
         this.txtId = txtId;
     }
     
-    public JTextField getTxtName() {
+    public JTextField getTxtTitle() {
         return txtTitle;
     }
 
-    public void setTxtName(JTextField txtName) {
+    public void setTxtTitle(JTextField txtName) {
         this.txtTitle = txtName;
     }
     
-    public JComboBox<String> getCmbSex() {
-        return cmbAvailable;
-    }
-
-    public void setCmbSex(JComboBox<String> cmbSex) {
-        this.cmbAvailable = cmbSex;
-    }
-
-    public JTextField getTxtAddress() {
+    public JTextField getTxtAuthor() {
         return txtAuthor;
     }
 
-    public void setTxtAddress(JTextField txtAddress) {
-        this.txtAuthor = txtAddress;
+    public void setTxtAuthor(JTextField txtAuthor) {
+        this.txtAuthor = txtAuthor;
     }
     
-    public JTextField getTxtNameSearch() {
-        return txtNameSearch;
+
+    public JTextField getTxtEdition() {
+        return txtEdition;
     }
 
-    public void setTxtNameSearch(JTextField txtNameSearch) {
-        this.txtNameSearch = txtNameSearch;
+    public void setTxtEdition(JTextField txtEdition) {
+        this.txtEdition = txtEdition;
+    }
+
+    public JFormattedTextField getTxtYear() {
+        return txtYear;
+    }
+
+    public void setTxtYear(JFormattedTextField txtYear) {
+        this.txtYear = txtYear;
+    }
+    
+    public JComboBox<String> getCmbAvailable() {
+        return cmbAvailable;
+    }
+
+    public void setCmbAvailable(JComboBox<String> cmbAvailable) {
+        this.cmbAvailable = cmbAvailable;
+    }
+    
+    public JTextField getTxtTitleSearch() {
+        return txtTitleSearch;
+    }
+
+    public void setTxtTitleSearch(JTextField txtTitleSearch) {
+        this.txtTitleSearch = txtTitleSearch;
     }
     
     public JTable getTblSearch() {
@@ -97,6 +120,7 @@ public class BookView extends javax.swing.JFrame {
     public void fillsFields(int id, String title, String author, String edition, String year, String available) {
         txtId.setText(id+"");
         txtTitle.setText(title);
+        txtAuthor.setText(author);
         txtEdition.setText(edition);
         txtYear.setText(year);
         cmbAvailable.setSelectedItem(available);
@@ -135,8 +159,8 @@ public class BookView extends javax.swing.JFrame {
     private void initComponents() {
 
         panSearch = new javax.swing.JPanel();
-        lblNameSearch = new javax.swing.JLabel();
-        txtNameSearch = new javax.swing.JTextField();
+        lblTitleSearch = new javax.swing.JLabel();
+        txtTitleSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSearch = new javax.swing.JTable();
@@ -165,10 +189,10 @@ public class BookView extends javax.swing.JFrame {
 
         panSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 14))); // NOI18N
 
-        lblNameSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        lblNameSearch.setText("Name:");
+        lblTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        lblTitleSearch.setText("Title:");
 
-        txtNameSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        txtTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         btnSearch.setBackground(new java.awt.Color(235, 235, 235));
         btnSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -219,9 +243,9 @@ public class BookView extends javax.swing.JFrame {
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(panSearchLayout.createSequentialGroup()
-                        .addComponent(lblNameSearch)
+                        .addComponent(lblTitleSearch)
                         .addGap(113, 113, 113)
-                        .addComponent(txtNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
                         .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -231,8 +255,8 @@ public class BookView extends javax.swing.JFrame {
             .addGroup(panSearchLayout.createSequentialGroup()
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(txtNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameSearch))
+                    .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitleSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
@@ -442,21 +466,22 @@ public class BookView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.showList();
     }
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchMouseClicked
+        controller.fillInData();
         btnDelete.setEnabled(true);
         btnAlter.setEnabled(true);
         btnRegister.setEnabled(false);
     }//GEN-LAST:event_tblSearchMouseClicked
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.delete();
     }
     
     private void btnAlterActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.alter();
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,7 +493,7 @@ public class BookView extends javax.swing.JFrame {
     }
     
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        
+        controller.add();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
@@ -524,8 +549,8 @@ public class BookView extends javax.swing.JFrame {
     private javax.swing.JLabel lblAvailable;
     private javax.swing.JLabel lblIEdition;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblNameSearch;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTitleSearch;
     private javax.swing.JLabel lblYear;
     private javax.swing.JPanel panData;
     private javax.swing.JPanel panOptions;
@@ -534,8 +559,8 @@ public class BookView extends javax.swing.JFrame {
     private javax.swing.JTextField txtAuthor;
     private javax.swing.JTextField txtEdition;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNameSearch;
     private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextField txtTitleSearch;
     private javax.swing.JFormattedTextField txtYear;
     // End of variables declaration//GEN-END:variables
 }

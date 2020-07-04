@@ -74,9 +74,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="lblNameSearch" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTitleSearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                          <Component id="txtNameSearch" min="-2" pref="425" max="-2" attributes="0"/>
+                          <Component id="txtTitleSearch" min="-2" pref="425" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="btnSearch" max="32767" attributes="0"/>
                       </Group>
@@ -90,8 +90,8 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNameSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTitleSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTitleSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="219" max="32767" attributes="0"/>
@@ -101,15 +101,15 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblNameSearch">
+        <Component class="javax.swing.JLabel" name="lblTitleSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Name:"/>
+            <Property name="text" type="java.lang.String" value="Title:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNameSearch">
+        <Component class="javax.swing.JTextField" name="txtTitleSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="18" style="0"/>
