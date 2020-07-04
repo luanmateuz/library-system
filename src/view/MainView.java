@@ -8,6 +8,7 @@ public class MainView extends javax.swing.JFrame {
 
     private EmployeeView manageEmployee;
     private StudentView manageStudent;
+    private BookView manageBook;
             
     public MainView() {
         initComponents();
@@ -26,6 +27,7 @@ public class MainView extends javax.swing.JFrame {
         mnuManage = new javax.swing.JMenu();
         mniEmpoyee = new javax.swing.JMenuItem();
         mniStudent = new javax.swing.JMenuItem();
+        mniBook = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +57,16 @@ public class MainView extends javax.swing.JFrame {
         });
         mnuManage.add(mniStudent);
 
+        mniBook.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniBook.setText("Book");
+        mniBook.setBorder(null);
+        mniBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBookActionPerformed(evt);
+            }
+        });
+        mnuManage.add(mniBook);
+
         mnbMenuBar.add(mnuManage);
 
         setJMenuBar(mnbMenuBar);
@@ -83,6 +95,11 @@ public class MainView extends javax.swing.JFrame {
         manageStudent = new StudentView();
         manageStudent.setVisible(true);
     }//GEN-LAST:event_mniStudentActionPerformed
+
+    private void mniBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBookActionPerformed
+        manageBook = new BookView();
+        manageBook.setVisible(true);
+    }//GEN-LAST:event_mniBookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +137,7 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar mnbMenuBar;
+    private javax.swing.JMenuItem mniBook;
     private javax.swing.JMenuItem mniEmpoyee;
     private javax.swing.JMenuItem mniStudent;
     private javax.swing.JMenu mnuManage;
