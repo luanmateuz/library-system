@@ -54,6 +54,21 @@ public class BookDAO {
         stmt.close();
     }
     
+    public void updateAvailability(Book book) throws SQLException {
+        
+        String sql = "UPDATE book SET available=? WHERE id=?";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        stmt.setString(1, book.getAvailable());
+        stmt.setInt(2, book.getId());
+        System.out.println(book.getId());
+        System.out.println(book.getAvailable());
+        
+        stmt.execute();
+        stmt.close();
+    }
+    
     public void delete(int id) throws SQLException {
         
         String sql = "DELETE FROM book WHERE id=?";
@@ -96,4 +111,5 @@ public class BookDAO {
         return list;
         
     }
+    
 }
