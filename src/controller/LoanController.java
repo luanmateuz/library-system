@@ -10,6 +10,7 @@ import model.Loan;
 import model.Student;
 import model.dao.LoanDAO;
 import view.LoanView;
+import model.dao.BookDAO;
 
 /**
  *
@@ -20,6 +21,8 @@ public class LoanController {
     private LoanView view;
     private Loan model;
     private LoanDAO dao;
+    private BookDAO bookDAO;
+    private Book book;
 
     public LoanController(LoanView view) {
         this.view = view;
@@ -37,14 +40,17 @@ public class LoanController {
 
             try {
                 dao = new LoanDAO();
-
+                
                 dao.insert(model);
+                this.changesAvailability("no");
 
                 view.showMessage("Successful Loan");
                 view.cleanFields();
                 view.disableFields();
                 
                 this.showList();
+                this.showStudentList();
+                this.showBookList();
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -54,6 +60,35 @@ public class LoanController {
         } else {
             view.showMessage("Fill all Data");
         }
+    }
+    
+    public void changesAvailability(String status) throws SQLException {
+        bookDAO = new BookDAO();
+        book = new Book();
+        
+        book.setId(Integer.parseInt(view.getIdBook()));
+        book.setAvailable(status);
+        
+        bookDAO.updateAvailability(book);
+        
+    }
+    
+    public void fillInData() {
+        
+        int selectedLine = view.getTblLoans().getSelectedRow();
+
+        if (selectedLine != -1) {
+
+            view.fillsFields(
+                    view.getTblSearch().getValueAt(selectedLine, 0).hashCode(),
+                    view.getTblSearch().getValueAt(selectedLine, 1).hashCode(),
+                    view.getTblSearch().getValueAt(selectedLine, 2).hashCode(),
+                    view.getTblSearch().getValueAt(selectedLine, 3).toString().replace("-", ""),
+                    view.getTblSearch().getValueAt(selectedLine, 4).toString().replace("-", "")
+            );
+        }
+
+        view.enableFields();
     }
     
     public void fillStudentData() {
