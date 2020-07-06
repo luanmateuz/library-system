@@ -21,11 +21,11 @@ public class LoanView extends javax.swing.JFrame {
     public LoanView() {
         this.initComponents();
         this.disableFields();
+        this.cleanFields();
         controller = new LoanController(this);
         controller.showStudentList();
         controller.showBookList();
         controller.showList();
-        this.loanDate();
     }
     
     public JTextField getTxtId() {
@@ -170,12 +170,21 @@ public class LoanView extends javax.swing.JFrame {
         return returnDateFormat;
     }
     
-    public void changesAvailability(String status) {
-        if (tblSearchStudent.getSelectedRow() != -1 || tblSearchBook.getSelectedRow() != -1) {
-            
-        } else {
-            
+    public String getIdBook() {
+        int selectedLine;
+        String id = "0";
+        
+        if (tblLoans.getSelectedRow() != -1) {
+            selectedLine = tblLoans.getSelectedRow();
+            id = tblLoans.getValueAt(selectedLine, 2).toString();
         }
+        
+        if (tblSearchBook.getSelectedRow() != -1) {
+            selectedLine = tblSearchBook.getSelectedRow();
+            id = tblSearchBook.getValueAt(selectedLine, 0).toString();
+        }
+        
+        return id;
     }
 
     /**
@@ -575,7 +584,7 @@ public class LoanView extends javax.swing.JFrame {
     }
 
     private void tblLoansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoansMouseClicked
-        //controller.fillInData();
+        controller.fillInData();
         btnDelete.setEnabled(true);
         btnReturn.setEnabled(true);
         btnLoan.setEnabled(false);
