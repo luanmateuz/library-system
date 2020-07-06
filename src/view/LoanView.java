@@ -591,7 +591,7 @@ public class LoanView extends javax.swing.JFrame {
     }//GEN-LAST:event_tblLoansMouseClicked
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        //controller.delete();
+        controller.delete();
     }
     
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {

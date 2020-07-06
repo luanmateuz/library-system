@@ -62,6 +62,35 @@ public class LoanController {
         }
     }
     
+    public void delete() {
+        if (view.showConfirm("Delete registration?")) {
+
+            model = new Loan();
+
+            model.setId(Integer.parseInt(view.getTxtId().getText()));
+
+            try {
+                dao = new LoanDAO();
+
+                dao.delete(model.getId());
+                this.changesAvailability("yes");
+
+                view.showMessage("Deleted Successfully");
+                view.cleanFields();
+                view.disableFields();
+
+                this.showList();
+                this.showStudentList();
+                this.showBookList();
+
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                view.showMessage("Error when delete Register");
+            }
+
+        }
+    }
+    
     public void changesAvailability(String status) throws SQLException {
         bookDAO = new BookDAO();
         book = new Book();
