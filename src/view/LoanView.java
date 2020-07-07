@@ -1,6 +1,5 @@
 package view;
 
-//import com.oracle.webservices.internal.api.databinding.DatabindingModeFeature;
 import controller.LoanController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -168,6 +167,14 @@ public class LoanView extends javax.swing.JFrame {
         String returnDateFormat = dateFormat.format(date);
         
         return returnDateFormat;
+    }
+    
+    public String getReturnDate() {
+        
+        int selectedLine = tblLoans.getSelectedRow();   
+        String tableDate = (tblLoans.getValueAt(selectedLine, 4)).toString();
+                
+        return tableDate;
     }
     
     public String getIdBook() {
@@ -595,7 +602,7 @@ public class LoanView extends javax.swing.JFrame {
     }
     
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {
-        //controller.alter();
+        controller.giveBack();
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {

@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Book;
-//import java.util.List;
-//import javax.swing.table.DefaultTableModel;
 import model.Loan;
 import model.Student;
 import model.dao.LoanDAO;
@@ -86,6 +84,35 @@ public class LoanController {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 view.showMessage("Error when delete Register");
+            }
+
+        }
+    }
+    
+    public void giveBack() {
+        if (view.showConfirm("Confirm book return?")) {
+
+            model = new Loan();
+
+            model.setId(Integer.parseInt(view.getTxtId().getText()));
+
+            try {
+                dao = new LoanDAO();
+
+                dao.delete(model.getId());
+                this.changesAvailability("yes");
+
+                view.showMessage("Book successfully Returned");
+                view.cleanFields();
+                view.disableFields();
+
+                this.showList();
+                this.showStudentList();
+                this.showBookList();
+
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                view.showMessage("Error when returning Book");
             }
 
         }
