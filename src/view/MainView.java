@@ -10,6 +10,7 @@ public class MainView extends javax.swing.JFrame {
     private StudentView manageStudent;
     private BookView manageBook;
     private LoanView loanBook;
+    private FineView fineStudent;
             
     public MainView() {
         initComponents();
@@ -31,6 +32,8 @@ public class MainView extends javax.swing.JFrame {
         mniBook = new javax.swing.JMenuItem();
         mnuLoan = new javax.swing.JMenu();
         mniLoanBook = new javax.swing.JMenuItem();
+        mnuFine = new javax.swing.JMenu();
+        mniFineStudent = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +89,20 @@ public class MainView extends javax.swing.JFrame {
 
         mnbMenuBar.add(mnuLoan);
 
+        mnuFine.setText("Fine");
+        mnuFine.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+
+        mniFineStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniFineStudent.setText("Student");
+        mniFineStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniFineStudentActionPerformed(evt);
+            }
+        });
+        mnuFine.add(mniFineStudent);
+
+        mnbMenuBar.add(mnuFine);
+
         setJMenuBar(mnbMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,6 +139,11 @@ public class MainView extends javax.swing.JFrame {
         loanBook = new LoanView();
         loanBook.setVisible(true);
     }//GEN-LAST:event_mniLoanBookActionPerformed
+
+    private void mniFineStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniFineStudentActionPerformed
+        fineStudent = new FineView();
+        fineStudent.setVisible(true);
+    }//GEN-LAST:event_mniFineStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,8 +183,10 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuBar mnbMenuBar;
     private javax.swing.JMenuItem mniBook;
     private javax.swing.JMenuItem mniEmpoyee;
+    private javax.swing.JMenuItem mniFineStudent;
     private javax.swing.JMenuItem mniLoanBook;
     private javax.swing.JMenuItem mniStudent;
+    private javax.swing.JMenu mnuFine;
     private javax.swing.JMenu mnuLoan;
     private javax.swing.JMenu mnuManage;
     // End of variables declaration//GEN-END:variables
