@@ -199,12 +199,10 @@ public class LoanController {
                     data.setValueAt(student.get(i).getCpf(), i, 2);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
-            }
+            } 
 
         } catch (SQLException e) {
-            view.showMessage("Error when list Student");
+            view.showMessage("Error when list Students");
         }
 
     }
@@ -234,12 +232,10 @@ public class LoanController {
                     data.setValueAt(book.get(i).getAvailable(), i, 3);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
             }
 
         } catch (SQLException e) {
-            view.showMessage("Error when list Student");
+            view.showMessage("Error when list Books");
         }
     }
     
@@ -268,12 +264,10 @@ public class LoanController {
                     data.setValueAt(loan.get(i).getReturnDate(), i, 4);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
             }
 
         } catch (SQLException e) {
-            view.showMessage("Error when list Student");
+            view.showMessage("Error when list Loans");
         }
     }
 }

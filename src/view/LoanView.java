@@ -3,7 +3,6 @@ package view;
 import controller.LoanController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-//import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -205,8 +204,8 @@ public class LoanView extends javax.swing.JFrame {
 
         panSearch = new javax.swing.JPanel();
         lblTitleSearch = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jrbStudent = new javax.swing.JRadioButton();
+        jrbBook = new javax.swing.JRadioButton();
         txtTitleSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -241,11 +240,11 @@ public class LoanView extends javax.swing.JFrame {
         lblTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         lblTitleSearch.setText("Search:");
 
-        jRadioButton1.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        jRadioButton1.setText("Student");
+        jrbStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        jrbStudent.setText("Student");
 
-        jRadioButton2.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        jRadioButton2.setText("Book");
+        jrbBook.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        jrbBook.setText("Book");
 
         txtTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
@@ -362,9 +361,9 @@ public class LoanView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panSearchLayout.createSequentialGroup()
                         .addComponent(lblTitleSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1)
+                        .addComponent(jrbStudent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
+                        .addComponent(jrbBook)
                         .addGap(37, 37, 37)
                         .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -382,8 +381,8 @@ public class LoanView extends javax.swing.JFrame {
                     .addComponent(btnSearch)
                     .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTitleSearch)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jrbStudent)
+                    .addComponent(jrbBook))
                 .addGap(18, 18, 18)
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -587,7 +586,17 @@ public class LoanView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
-        //controller.showList();
+        
+        if (jrbStudent.isSelected()) {
+            jrbBook.setSelected(false);
+            controller.showStudentList();
+        } else if (jrbBook.isSelected()) {
+            jrbStudent.setSelected(false);
+            controller.showBookList();
+        } else {
+            controller.showStudentList();
+            controller.showBookList();
+        }
     }
 
     private void tblLoansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoansMouseClicked
@@ -700,11 +709,11 @@ public class LoanView extends javax.swing.JFrame {
     private javax.swing.JButton btnQuit;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JRadioButton jrbBook;
+    private javax.swing.JRadioButton jrbStudent;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblIdBook;
     private javax.swing.JLabel lblIdStudent;
