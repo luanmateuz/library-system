@@ -1,5 +1,6 @@
 package view;
 
+import controller.FineController;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -12,11 +13,15 @@ import javax.swing.JTextField;
  */
 public class FineView extends javax.swing.JFrame {
 
+    private FineController controller;
     
     public FineView() {
         this.initComponents();
         this.disableFields();
         this.cleanFields();
+        controller = new FineController(this);
+        controller.showList();
+        controller.showFinesList();
     }
 
     public JTable getTblSearchStudent() {
@@ -43,12 +48,12 @@ public class FineView extends javax.swing.JFrame {
         this.txtStudent = txtStudent;
     }
 
-    public JTextField getTxtTitleSearch() {
-        return txtTitleSearch;
+    public JTextField txtStudentSearch() {
+        return txtStudentSearch;
     }
 
     public void setTxtTitleSearch(JTextField txtTitleSearch) {
-        this.txtTitleSearch = txtTitleSearch;
+        this.txtStudentSearch = txtTitleSearch;
     }
 
     public JTextField getTxtTotal() {
@@ -104,6 +109,11 @@ public class FineView extends javax.swing.JFrame {
         txtTotal.setText("");
     }
     
+    public void fillsFields(int idStudent, String Student) {
+        txtIdStudent.setText(idStudent+"");
+        txtStudent.setText(Student);
+    }
+    
     public void fillsFields(int idStudent, String Student, float total) {
         txtIdStudent.setText(idStudent+"");
         txtStudent.setText(Student);
@@ -111,7 +121,7 @@ public class FineView extends javax.swing.JFrame {
     }
     
     public boolean checksData() {
-        return !txtIdStudent.getText().equals("");
+        return true;//!txtIdStudent.getText().equals("");
     }
        
     public void showMessage(String message) {
@@ -134,8 +144,8 @@ public class FineView extends javax.swing.JFrame {
     private void initComponents() {
 
         panSearch = new javax.swing.JPanel();
-        lblTitleSearch = new javax.swing.JLabel();
-        txtTitleSearch = new javax.swing.JTextField();
+        lblStudentSearch = new javax.swing.JLabel();
+        txtStudentSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSearchStudent = new javax.swing.JTable();
@@ -165,10 +175,10 @@ public class FineView extends javax.swing.JFrame {
 
         panSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 14))); // NOI18N
 
-        lblTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        lblTitleSearch.setText("Stutdent:");
+        lblStudentSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        lblStudentSearch.setText("Stutdent:");
 
-        txtTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        txtStudentSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         btnSearch.setBackground(new java.awt.Color(235, 235, 235));
         btnSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -220,7 +230,7 @@ public class FineView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -249,9 +259,9 @@ public class FineView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panSearchLayout.createSequentialGroup()
-                        .addComponent(lblTitleSearch)
+                        .addComponent(lblStudentSearch)
                         .addGap(18, 18, 18)
-                        .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStudentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
                     .addGroup(panSearchLayout.createSequentialGroup()
@@ -265,8 +275,8 @@ public class FineView extends javax.swing.JFrame {
             .addGroup(panSearchLayout.createSequentialGroup()
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(txtTitleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitleSearch))
+                    .addComponent(txtStudentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentSearch))
                 .addGap(18, 18, 18)
                 .addGroup(panSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
@@ -494,11 +504,11 @@ public class FineView extends javax.swing.JFrame {
     }
     
     private void btnFineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFineActionPerformed
-        
+        controller.add();
     }//GEN-LAST:event_btnFineActionPerformed
 
     private void tblSearchStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchStudentMouseClicked
-        
+        controller.fillInData();
     }//GEN-LAST:event_tblSearchStudentMouseClicked
 
     private void tblFinesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinesMouseClicked
@@ -571,7 +581,7 @@ public class FineView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblIdStudent;
     private javax.swing.JLabel lblStudent;
-    private javax.swing.JLabel lblTitleSearch;
+    private javax.swing.JLabel lblStudentSearch;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblValue;
     private javax.swing.JPanel panData;
@@ -581,7 +591,7 @@ public class FineView extends javax.swing.JFrame {
     private javax.swing.JTable tblSearchStudent;
     private javax.swing.JTextField txtIdStudent;
     private javax.swing.JTextField txtStudent;
-    private javax.swing.JTextField txtTitleSearch;
+    private javax.swing.JTextField txtStudentSearch;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JFormattedTextField txtValue;
     // End of variables declaration//GEN-END:variables

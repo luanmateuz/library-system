@@ -72,9 +72,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblTitleSearch" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStudentSearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtTitleSearch" min="-2" pref="609" max="-2" attributes="0"/>
+                          <Component id="txtStudentSearch" min="-2" pref="609" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnSearch" pref="96" max="32767" attributes="0"/>
                       </Group>
@@ -93,8 +93,8 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTitleSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTitleSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtStudentSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblStudentSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -107,7 +107,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblTitleSearch">
+        <Component class="javax.swing.JLabel" name="lblStudentSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="18" style="0"/>
@@ -115,7 +115,7 @@
             <Property name="text" type="java.lang.String" value="Stutdent:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTitleSearch">
+        <Component class="javax.swing.JTextField" name="txtStudentSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="18" style="0"/>
@@ -177,9 +177,9 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="0">
                     <Column editable="false" title="ID" type="java.lang.Integer"/>
-                    <Column editable="false" title="Student" type="java.lang.String"/>
+                    <Column editable="false" title="Student" type="java.lang.Integer"/>
                     <Column editable="false" title="Description" type="java.lang.String"/>
-                    <Column editable="false" title="Value" type="java.lang.String"/>
+                    <Column editable="false" title="Value" type="java.lang.Float"/>
                   </Table>
                 </Property>
               </Properties>
