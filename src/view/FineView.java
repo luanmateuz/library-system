@@ -114,10 +114,10 @@ public class FineView extends javax.swing.JFrame {
         txtStudent.setText(Student);
     }
     
-    public void fillsFields(int idStudent, String Student, float total) {
+    public void fillsFields(int idStudent, String Student, String total) {
         txtIdStudent.setText(idStudent+"");
         txtStudent.setText(Student);
-        txtTotal.setText(total+"");
+        txtTotal.setText(total);
     }
     
     public boolean checksData() {
@@ -131,7 +131,7 @@ public class FineView extends javax.swing.JFrame {
     public boolean showConfirm(String message) {
         int res = JOptionPane.showConfirmDialog(null, message, "Confirm!", JOptionPane.YES_NO_OPTION);
         
-        return res == 1;
+        return res != 1;
     }
 
     /**
@@ -488,7 +488,7 @@ public class FineView extends javax.swing.JFrame {
     }
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.delete();
     }
     
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {
@@ -509,10 +509,12 @@ public class FineView extends javax.swing.JFrame {
 
     private void tblSearchStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchStudentMouseClicked
         controller.fillInData();
+        btnPay.setEnabled(true);
     }//GEN-LAST:event_tblSearchStudentMouseClicked
 
     private void tblFinesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinesMouseClicked
-        
+        btnDelete.setEnabled(true);
+        btnPay.setEnabled(false);
     }//GEN-LAST:event_tblFinesMouseClicked
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {

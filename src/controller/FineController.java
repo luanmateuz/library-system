@@ -2,6 +2,8 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import model.Fine;
 import model.Student;
@@ -27,11 +29,11 @@ public class FineController {
     public void add() {
         if (view.checksData()) {
             model = new Fine();
-            
+
             model.setIdStudent(Integer.valueOf(view.getTxtIdStudent().getText()));
             model.setDescription(view.getCmbDescription().getSelectedItem().toString());
             model.setValue(Float.valueOf(view.getTxtValue().getText()));
-            
+
             try {
                 dao = new FineDAO();
 
@@ -44,34 +46,73 @@ public class FineController {
                 this.showList();
                 this.showFinesList();
             } catch (SQLException e) {
-                System.out.println("error aqui");
+                view.showMessage("Error");
+                System.out.println("Error => " + e.getMessage());
             }
         } else {
             view.showMessage("Fill all Data!");
         }
     }
-    
+
+    public void delete() {
+        if (view.showConfirm("To Delete a Fine?")) {
+            
+            int selectedLine = view.getTblFines().getSelectedRow();
+
+            if (selectedLine != -1) {
+
+                int id = view.getTblFines().getValueAt(selectedLine, 0).hashCode();
+
+                try {
+                    dao = new FineDAO();
+
+                    dao.delete(id);
+
+                    view.showMessage("Deleted Successfully");
+                    view.cleanFields();
+                    view.disableFields();
+
+                    this.showList();
+                    this.showFinesList();
+                } catch (SQLException ex) {
+                    System.out.println("erro => " + ex.getMessage());
+                }
+            }
+            System.out.println(view.getTblFines().getValueAt(selectedLine, 0).hashCode());
+        }
+
+    }
+
     public void fillInData() {
 
         int selectedLine = view.getTblSearchStudent().getSelectedRow();
 
         if (selectedLine != -1) {
 
-            view.fillsFields(
-                    view.getTblSearchStudent().getValueAt(selectedLine, 0).hashCode(),
-                    view.getTblSearchStudent().getValueAt(selectedLine, 1).toString()
-            );
+            try {
+                dao = new FineDAO();
+
+                view.fillsFields(
+                        view.getTblSearchStudent().getValueAt(selectedLine, 0).hashCode(),
+                        view.getTblSearchStudent().getValueAt(selectedLine, 1).toString(),
+                        dao.totalStudentFines(view.getTblSearchStudent().getValueAt(selectedLine, 0).hashCode())
+                );
+
+            } catch (SQLException ex) {
+                view.showMessage("Error when fill data");
+                System.out.println(ex.getMessage());
+            }
         }
 
         view.enableFields();
     }
-    
+
     public void showList() {
         List<Student> student;
 
         try {
             studentDAO = new StudentDAO();
-            
+
             String name = "%" + view.txtStudentSearch().getText() + "%";
 
             student = studentDAO.select(name);
@@ -90,20 +131,20 @@ public class FineController {
                     data.setValueAt(student.get(i).getCpf(), i, 2);
                 }
 
-            } 
+            }
 
         } catch (SQLException e) {
             view.showMessage("Error when list Student");
         }
 
     }
-    
+
     public void showFinesList() {
         List<Fine> fine;
 
         try {
             dao = new FineDAO();
-            
+
             fine = dao.select();
 
             if (!fine.isEmpty()) {
@@ -121,7 +162,7 @@ public class FineController {
                     data.setValueAt(fine.get(i).getValue(), i, 3);
                 }
 
-            } 
+            }
 
         } catch (SQLException e) {
             view.showMessage("Error when list Student");

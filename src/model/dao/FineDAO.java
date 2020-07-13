@@ -35,13 +35,39 @@ public class FineDAO {
         stmt.close();
     }
     
-    public String totalStudentFine(int idStudent) {
+    public void delete(int id) throws SQLException {
         
-        String sql = "SELECT SUM(value) AS id_student"
-                + "FROM fines" 
-                + "GROUP student.";
+        String sql = "DELETE FROM fines WHERE id=?";
         
-        return null;
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        stmt.setInt(1, id);
+        
+        stmt.execute();
+        stmt.close();
+    }
+    
+    public String totalStudentFines(int idStudent) throws SQLException {
+        
+        String sql = "SELECT SUM(fines.value) AS totalValue "
+                + "FROM fines "
+                + "WHERE id_student = ?";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        stmt.setInt(1, idStudent);
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        rs.next();
+        
+        String totalFine = String.valueOf(rs.getFloat("totalValue"));
+        
+        System.out.println(totalFine);
+        
+        stmt.execute();
+        stmt.close();
+        
+        return totalFine;
     }
     
     public List<Fine> select() throws SQLException {
