@@ -510,11 +510,13 @@ public class FineView extends javax.swing.JFrame {
     private void tblSearchStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSearchStudentMouseClicked
         controller.fillInData();
         btnPay.setEnabled(true);
+        btnDelete.setEnabled(false);
     }//GEN-LAST:event_tblSearchStudentMouseClicked
 
     private void tblFinesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinesMouseClicked
         btnDelete.setEnabled(true);
         btnPay.setEnabled(false);
+        btnFine.setEnabled(false);
     }//GEN-LAST:event_tblFinesMouseClicked
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {
