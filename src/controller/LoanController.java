@@ -38,14 +38,14 @@ public class LoanController {
 
             try {
                 dao = new LoanDAO();
-                
+
                 dao.insert(model);
                 this.changesAvailability("no");
 
                 view.showMessage("Successful Loan");
                 view.cleanFields();
                 view.disableFields();
-                
+
                 this.showList();
                 this.showStudentList();
                 this.showBookList();
@@ -59,7 +59,7 @@ public class LoanController {
             view.showMessage("Fill all Data");
         }
     }
-    
+
     public void delete() {
         if (view.showConfirm("Delete registration?")) {
 
@@ -88,7 +88,7 @@ public class LoanController {
 
         }
     }
-    
+
     public void giveBack() {
         if (view.showConfirm("Confirm book return?")) {
 
@@ -117,20 +117,20 @@ public class LoanController {
 
         }
     }
-    
+
     public void changesAvailability(String status) throws SQLException {
         bookDAO = new BookDAO();
         book = new Book();
-        
+
         book.setId(Integer.parseInt(view.getIdBook()));
         book.setAvailable(status);
-        
+
         bookDAO.updateAvailability(book);
-        
+
     }
-    
+
     public void fillInData() {
-        
+
         int selectedLine = view.getTblLoans().getSelectedRow();
 
         if (selectedLine != -1) {
@@ -146,7 +146,7 @@ public class LoanController {
 
         view.enableFields();
     }
-    
+
     public void fillStudentData() {
 
         int selectedLine = view.getTblSearchStudent().getSelectedRow();
@@ -160,27 +160,31 @@ public class LoanController {
 
         view.enableFields();
     }
-    
+
     public void fillBookData() {
 
         int selectedLine = view.getTblSearchBook().getSelectedRow();
 
         if (selectedLine != -1) {
-
-            view.fillBookFields(
-                    view.getTblSearchBook().getValueAt(selectedLine, 0).hashCode()
-            );
+            
+            if (view.getTblSearchBook().getValueAt(selectedLine, 3).equals("yes")) {
+                view.fillBookFields(
+                        view.getTblSearchBook().getValueAt(selectedLine, 0).hashCode()
+                );
+            } else {
+                view.showMessage("book Unavailable");
+            }
         }
 
         view.enableFields();
     }
-    
+
     public void showStudentList() {
         List<Student> student;
 
         try {
             dao = new LoanDAO();
-            
+
             String name = "%" + view.getTxtTitleSearch().getText() + "%";
 
             student = dao.selectStudent(name);
@@ -199,14 +203,14 @@ public class LoanController {
                     data.setValueAt(student.get(i).getCpf(), i, 2);
                 }
 
-            } 
+            }
 
         } catch (SQLException e) {
             view.showMessage("Error when list Students");
         }
 
     }
-    
+
     public void showBookList() {
         List<Book> book;
 
@@ -238,8 +242,7 @@ public class LoanController {
             view.showMessage("Error when list Books");
         }
     }
-    
-    
+
     public void showList() {
         List<Loan> loan;
 

@@ -307,7 +307,6 @@
                   <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtAuthor" max="32767" attributes="0"/>
-                      <Component id="txtId" min="-2" pref="150" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="txtEdition" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -317,6 +316,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtId" min="-2" pref="150" max="-2" attributes="0"/>
                               <Component id="cmbAvailable" min="-2" pref="150" max="-2" attributes="0"/>
                               <Component id="txtTitle" min="-2" pref="425" max="-2" attributes="0"/>
                           </Group>
