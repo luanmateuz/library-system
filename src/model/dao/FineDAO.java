@@ -47,6 +47,18 @@ public class FineDAO {
         stmt.close();
     }
     
+    public void deleteFines(int id) throws SQLException {
+        
+        String sql = "DELETE FROM fines WHERE id_student=?";
+        
+        PreparedStatement stmt = connection.prepareCall(sql);
+        
+        stmt.setInt(1, id);
+        
+        stmt.execute();
+        stmt.close();
+    }
+    
     public String totalStudentFines(int idStudent) throws SQLException {
         
         String sql = "SELECT SUM(fines.value) AS totalValue "

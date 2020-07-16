@@ -492,7 +492,7 @@ public class FineView extends javax.swing.JFrame {
     }
     
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.pay();
     }
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {

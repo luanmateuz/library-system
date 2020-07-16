@@ -39,7 +39,7 @@ public class FineController {
 
                 dao.insert(model);
 
-                view.showMessage("Registered Successfully");
+                view.showMessage("Fined Student");
                 view.cleanFields();
                 view.disableFields();
 
@@ -52,6 +52,29 @@ public class FineController {
         } else {
             view.showMessage("Fill all Data!");
         }
+    }
+    
+    public void pay() {
+        if (view.showConfirm("Confirm Payment?")) {
+            
+            int idStudent = Integer.valueOf(view.getTxtIdStudent().getText());
+            
+            try {
+                dao = new FineDAO();
+
+                dao.deleteFines(idStudent);
+
+                view.showMessage("Successful Payment");
+                view.cleanFields();
+                view.disableFields();
+
+                this.showList();
+                this.showFinesList();
+            } catch (SQLException e) {
+                view.showMessage("Error");
+                System.out.println("Error => " + e.getMessage());
+            }
+        } 
     }
 
     public void delete() {
@@ -78,7 +101,7 @@ public class FineController {
                     System.out.println("erro => " + ex.getMessage());
                 }
             }
-            System.out.println(view.getTblFines().getValueAt(selectedLine, 0).hashCode());
+            
         }
 
     }
