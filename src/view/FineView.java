@@ -121,7 +121,7 @@ public class FineView extends javax.swing.JFrame {
     }
     
     public boolean checksData() {
-        return !txtIdStudent.getText().equals("");
+        return txtValue.getValue() != null;
     }
        
     public void showMessage(String message) {
