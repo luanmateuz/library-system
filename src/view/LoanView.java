@@ -190,6 +190,7 @@ public class LoanView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSearch = new javax.swing.ButtonGroup();
         panSearch = new javax.swing.JPanel();
         lblTitleSearch = new javax.swing.JLabel();
         jrbStudent = new javax.swing.JRadioButton();
@@ -228,9 +229,11 @@ public class LoanView extends javax.swing.JFrame {
         lblTitleSearch.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         lblTitleSearch.setText("Search:");
 
+        btgSearch.add(jrbStudent);
         jrbStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         jrbStudent.setText("Student");
 
+        btgSearch.add(jrbBook);
         jrbBook.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         jrbBook.setText("Book");
 
@@ -576,10 +579,8 @@ public class LoanView extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
         
         if (jrbStudent.isSelected()) {
-            jrbBook.setSelected(false);
             controller.showStudentList();
         } else if (jrbBook.isSelected()) {
-            jrbStudent.setSelected(false);
             controller.showBookList();
         } else {
             controller.showStudentList();
@@ -694,6 +695,7 @@ public class LoanView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgSearch;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLoan;
     private javax.swing.JButton btnNew;
