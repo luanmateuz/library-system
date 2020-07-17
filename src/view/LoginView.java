@@ -14,7 +14,12 @@ public class LoginView extends javax.swing.JFrame {
 
     public LoginView() {
         initComponents();
+        setIcon();
         controller = new LoginController(this);
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/icon.png")));
     }
     
     public String getUsername() {
