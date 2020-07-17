@@ -83,11 +83,7 @@ public class LoanView extends javax.swing.JFrame {
     }
     
     public void enableFields() {
-       //txtTitle.setEditable(true);
-        //txtAuthor.setEditable(true);
-        //txtEdition.setEditable(true);
-        //txtLoanDate.setEditable(true);
-        //txtReturnDate.setEditable(true);
+       txtReturnDate.setEditable(true);
     }
     
     public void disableFields() {
