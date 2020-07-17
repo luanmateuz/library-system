@@ -484,7 +484,7 @@ public class FineView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        controller.showList();
     }
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
