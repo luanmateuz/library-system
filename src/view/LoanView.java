@@ -127,12 +127,8 @@ public class LoanView extends javax.swing.JFrame {
     }
     
     public boolean checksData() {
-        if (!txtIdStudent.getText().equals("") && !txtIdBook.getText().equals("")
-                && !txtLoanDate.getText().equals("") && !txtReturnDate.getText().equals("")) {
-            return true;
-        } else {
-            return false;
-        }
+        return !txtIdStudent.getText().equals("") && !txtIdBook.getText().equals("")
+                && !txtLoanDate.getText().equals("") && !txtReturnDate.getText().equals("");
     }
        
     public void showMessage(String message) {
@@ -142,11 +138,7 @@ public class LoanView extends javax.swing.JFrame {
     public boolean showConfirm(String message) {
         int res = JOptionPane.showConfirmDialog(null, message, "Confirm!", JOptionPane.YES_NO_OPTION);
         
-        if (res == JOptionPane.YES_NO_OPTION) {
-            return true;
-        }
-        
-        return false;
+        return res == JOptionPane.YES_NO_OPTION;
     }
     
     public String loanDate() {
@@ -678,15 +670,18 @@ public class LoanView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoanView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

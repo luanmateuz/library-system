@@ -1,6 +1,7 @@
 package view;
 
 import controller.EmployeeController;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -173,21 +174,13 @@ public class EmployeeView extends javax.swing.JFrame {
     }
     
     public boolean checksData() {
-        if (!txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
+        return !txtName.getText().equals("") && !txtCPF.getText().equals("")  && !cmbSex.getSelectedItem().equals("")
                 && !txtBirthday.getText().equals("") && !txtAddress.getText().equals("") && !txtUsername.getText().equals("")
-                && !pwdPassword.getPassword().toString().equals("") && !pwdConfirmPassword.getPassword().toString().equals("")) {
-            return true;
-        } 
-        
-        return false;
+                && !Arrays.toString(pwdPassword.getPassword()).equals("") && !Arrays.toString(pwdConfirmPassword.getPassword()).equals("");
     }
     
     public boolean checkPasswords() {
-        if (!pwdPassword.getText().equals("") && pwdPassword.getText().equals(pwdConfirmPassword.getText())) {
-            return true;
-        }
-        
-        return false;
+        return !pwdPassword.getText().equals("") && pwdPassword.getText().equals(pwdConfirmPassword.getText());
     }
     
     public void showMessage(String message) {
@@ -197,11 +190,7 @@ public class EmployeeView extends javax.swing.JFrame {
     public boolean showConfirm(String message) {
         int res = JOptionPane.showConfirmDialog(null, message, "Confirm!", JOptionPane.YES_NO_OPTION);
         
-        if (res == JOptionPane.YES_NO_OPTION) {
-            return true;
-        }
-        
-        return false;
+        return res == JOptionPane.YES_NO_OPTION;
     }
 
     /**
@@ -641,15 +630,11 @@ public class EmployeeView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(EmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
