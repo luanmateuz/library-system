@@ -11,6 +11,8 @@ public class MainView extends javax.swing.JFrame {
     private BookView manageBook;
     private LoanView loanBook;
     private FineView fineStudent;
+    private SystemView aboutSystem;
+    private LicenseView aboutLicense;
 
     public MainView() {
         initComponents();
@@ -34,6 +36,9 @@ public class MainView extends javax.swing.JFrame {
         mniLoanBook = new javax.swing.JMenuItem();
         mnuFine = new javax.swing.JMenu();
         mniFineStudent = new javax.swing.JMenuItem();
+        mnuAbout = new javax.swing.JMenu();
+        mniSystem = new javax.swing.JMenuItem();
+        mniLicense = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library");
@@ -107,6 +112,30 @@ public class MainView extends javax.swing.JFrame {
 
         mnbMenuBar.add(mnuFine);
 
+        mnuAbout.setText("About");
+        mnuAbout.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnuAbout.setPreferredSize(new java.awt.Dimension(61, 19));
+
+        mniSystem.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniSystem.setText("System");
+        mniSystem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSystemActionPerformed(evt);
+            }
+        });
+        mnuAbout.add(mniSystem);
+
+        mniLicense.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mniLicense.setText("License");
+        mniLicense.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLicenseActionPerformed(evt);
+            }
+        });
+        mnuAbout.add(mniLicense);
+
+        mnbMenuBar.add(mnuAbout);
+
         setJMenuBar(mnbMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,6 +178,16 @@ public class MainView extends javax.swing.JFrame {
         fineStudent.setVisible(true);
     }//GEN-LAST:event_mniFineStudentActionPerformed
 
+    private void mniSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSystemActionPerformed
+        aboutSystem = new SystemView();
+        aboutSystem.setVisible(true);
+    }//GEN-LAST:event_mniSystemActionPerformed
+
+    private void mniLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLicenseActionPerformed
+        aboutLicense = new LicenseView();
+        aboutLicense.setVisible(true);
+    }//GEN-LAST:event_mniLicenseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,8 +224,11 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniBook;
     private javax.swing.JMenuItem mniEmpoyee;
     private javax.swing.JMenuItem mniFineStudent;
+    private javax.swing.JMenuItem mniLicense;
     private javax.swing.JMenuItem mniLoanBook;
     private javax.swing.JMenuItem mniStudent;
+    private javax.swing.JMenuItem mniSystem;
+    private javax.swing.JMenu mnuAbout;
     private javax.swing.JMenu mnuFine;
     private javax.swing.JMenu mnuLoan;
     private javax.swing.JMenu mnuManage;
