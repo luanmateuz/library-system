@@ -50,6 +50,7 @@ public class LoginView extends javax.swing.JFrame {
         btnEnter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setPreferredSize(new java.awt.Dimension(350, 450));
         setResizable(false);
 

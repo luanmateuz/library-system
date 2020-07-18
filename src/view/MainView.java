@@ -36,12 +36,14 @@ public class MainView extends javax.swing.JFrame {
         mniFineStudent = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Library");
 
         mnbMenuBar.setBorder(null);
         mnbMenuBar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         mnuManage.setText("Manage");
         mnuManage.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnuManage.setPreferredSize(new java.awt.Dimension(75, 23));
 
         mniEmpoyee.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         mniEmpoyee.setText("Employee");
@@ -77,6 +79,7 @@ public class MainView extends javax.swing.JFrame {
 
         mnuLoan.setText("Loan");
         mnuLoan.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnuLoan.setPreferredSize(new java.awt.Dimension(53, 23));
 
         mniLoanBook.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         mniLoanBook.setText("Book");
@@ -91,6 +94,7 @@ public class MainView extends javax.swing.JFrame {
 
         mnuFine.setText("Fine");
         mnuFine.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        mnuFine.setPreferredSize(new java.awt.Dimension(49, 23));
 
         mniFineStudent.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         mniFineStudent.setText("Student");

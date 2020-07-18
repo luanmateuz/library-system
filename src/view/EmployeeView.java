@@ -237,6 +237,7 @@ public class EmployeeView extends javax.swing.JFrame {
         pwdConfirmPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Employee");
         setPreferredSize(new java.awt.Dimension(802, 670));
         setResizable(false);
 
