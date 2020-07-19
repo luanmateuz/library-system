@@ -348,7 +348,7 @@ public class BookView extends javax.swing.JFrame {
         lblAvailable.setText("Available:");
 
         cmbAvailable.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        cmbAvailable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmbAvailable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "yes", "no" }));
 
         lblAddress.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         lblAddress.setText("Author:");
