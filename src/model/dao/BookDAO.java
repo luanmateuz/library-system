@@ -62,8 +62,6 @@ public class BookDAO {
         
         stmt.setString(1, book.getAvailable());
         stmt.setInt(2, book.getId());
-        System.out.println(book.getId());
-        System.out.println(book.getAvailable());
         
         stmt.execute();
         stmt.close();
