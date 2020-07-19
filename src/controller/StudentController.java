@@ -182,8 +182,6 @@ public class StudentController {
                     data.setValueAt(student.get(i).getEmail(), i, 7);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
             }
 
         } catch (SQLException e) {

@@ -159,9 +159,7 @@ public class BookController {
                     data.setValueAt(book.get(i).getAvailable(), i, 5);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
-            }
+            } 
 
         } catch (SQLException e) {
             view.showMessage("Error when list Student");

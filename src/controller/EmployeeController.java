@@ -184,8 +184,6 @@ public class EmployeeController {
                     data.setValueAt(employee.get(i).getUsername(), i, 7);
                 }
 
-            } else {
-                view.showMessage("No Record Found");
             }
 
         } catch (SQLException e) {
