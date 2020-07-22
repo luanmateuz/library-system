@@ -1,11 +1,16 @@
 package view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author luan
  */
 public class MainView extends javax.swing.JFrame {
 
+    private Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/icon.png"));
+    
     private EmployeeView manageEmployee;
     private StudentView manageStudent;
     private BookView manageBook;
@@ -16,8 +21,9 @@ public class MainView extends javax.swing.JFrame {
 
     public MainView() {
         initComponents();
+        setIconImage(icon);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -156,36 +162,43 @@ public class MainView extends javax.swing.JFrame {
     private void mniEmpoyeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEmpoyeeActionPerformed
         manageEmployee = new EmployeeView();
         manageEmployee.setVisible(true);
+        manageEmployee.setIconImage(icon);
     }//GEN-LAST:event_mniEmpoyeeActionPerformed
 
     private void mniStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniStudentActionPerformed
         manageStudent = new StudentView();
         manageStudent.setVisible(true);
+        manageStudent.setIconImage(icon);
     }//GEN-LAST:event_mniStudentActionPerformed
 
     private void mniBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBookActionPerformed
         manageBook = new BookView();
         manageBook.setVisible(true);
+        manageBook.setIconImage(icon);
     }//GEN-LAST:event_mniBookActionPerformed
 
     private void mniLoanBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoanBookActionPerformed
         loanBook = new LoanView();
         loanBook.setVisible(true);
+        loanBook.setIconImage(icon);
     }//GEN-LAST:event_mniLoanBookActionPerformed
 
     private void mniFineStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniFineStudentActionPerformed
         fineStudent = new FineView();
         fineStudent.setVisible(true);
+        fineStudent.setIconImage(icon);
     }//GEN-LAST:event_mniFineStudentActionPerformed
 
     private void mniSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSystemActionPerformed
         aboutSystem = new SystemView();
         aboutSystem.setVisible(true);
+        aboutSystem.setIconImage(icon);
     }//GEN-LAST:event_mniSystemActionPerformed
 
     private void mniLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLicenseActionPerformed
         aboutLicense = new LicenseView();
         aboutLicense.setVisible(true);
+        aboutLicense.setIconImage(icon);
     }//GEN-LAST:event_mniLicenseActionPerformed
 
     /**
