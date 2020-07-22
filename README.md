@@ -86,7 +86,7 @@ Developed with the following technologies:
 ![Fine](src/view/images/ScreenshotFine.png)
 
 
-- 🎥 [Click here](youtu.be/r37m0exstx0) to watch video of the system working.
+- 🎥 [Click here](https://www.youtube.com/watch?v=r37m0exstx0) to watch video of the system working.
 
 ## 💁🏻 Contributing
 
