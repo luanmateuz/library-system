@@ -31,7 +31,7 @@ public class SystemView extends javax.swing.JFrame {
         jLabel1.setText("Library");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel2.setText("<html>This system was made in order to learn about software development, put the contents into practice: \n<br> <br> \nUML  \n<br> \nMVC \n<br> \n Database \n <br> \nObject Oriented Programming \n<br> <br> \nUsing technologies: \n<br> <br>\n Java 8 \n<br> \nMySQL\n <br> <br> \nThis system can and should be used in a library. \n<br>\n If you want to modify, redo, share or sell read the License. \n<br><br>\nMade by: Luan Mateus\n<br>\n<br>\nGitHub: github.com/hellowluan\n<br>\nInstagram: instagram.com/hellowluan\n<br>\nTwitter: twitter.com/hellowluan\n<br>\nLinkdIn: linkedin.com/in/hellowluan\n<br>\n<br></html>");
+        jLabel2.setText("<html>This system was made in order to learn about software development, put the contents into practice: \n<br> <br> \nUML  \n<br> \nMVC \n<br> \n Database \n <br> \nObject Oriented Programming \n<br> <br> \nUsing technologies: \n<br> <br>\n Java 8 \n<br> \nMySQL\n <br> <br> \nThis system can and should be used in a library. \n<br>\n If you want to modify, redo, share or sell read the License. \n<br><br>\nMade by: Luan Mateus\n<br>\n<br>\nGitHub: github.com/luanmateuz\n<br>\nLinkedIn: linkedin.com/in/luanmateuz\n<br>\nTwitter: twitter.com/luanmateuz\n<br>\nInstagram: instagram.com/luanmateuzz\n<br>\n<br></html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
